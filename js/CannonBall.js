@@ -1,9 +1,6 @@
 class CannonBall {
   constructor(x, y) {
     var options = {
-      restitution: 0.8,
-      friction: 1.0,
-      density: 1.0,
       isStatic: true
     };
     this.r = 30;
@@ -24,12 +21,9 @@ class CannonBall {
   display() {
     var angle = this.body.angle;
     var pos = this.body.position;
-
     push();
-    translate(pos.x, pos.y);
-    rotate(angle);
     imageMode(CENTER);
-    image(this.image, 0, 0, this.r, this.r);
+    image(this.image, pos.x, pos.y, this.r, this.r);
     pop();
 
     // Additional Activity
@@ -38,8 +32,8 @@ class CannonBall {
       this.trajectory.push(position);
     }
 
-    // for (var i = 0; i < this.trajectory.length; i++) {
-    //   image(this.image, this.trajectory[i][0], this.trajectory[i][1], 5, 5);
-    // }
+    for (var i = 0; i < this.trajectory.length; i++) {
+      image(this.image, this.trajectory[i][0], this.trajectory[i][1], 5, 5);
+    }
   }
 }
